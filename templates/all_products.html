@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block 'products' %}
+
+<div class="col-md-12 explore"><h1 class="explore_expander">Explore</h1><img src="{% static 'images/explore.png' %}"> 
+    <div >
+    </div>
+</div>
+
+{% include 'category_segment.html' %}
+
+<div class="col-md-12 featured">
+  <h1>All products</h1>
+   {% for product in products %}
+    <div class="col-md-3 featured_pr">
+    <div class="featured_br">
+        <a href="{% url 'product' product.slug %}" class="col-md-12"><img class="product_img" src="{{MEDIA_URL}}{{product.mainImage}} " alt="{{product.title}}"/> </a>
+        <h1> <a href="{% url 'product' product.slug %}">{{product.title|truncatechars:14}}</a> </h1>
+        <p>{{product.price}}</p>
+        {# <a href="{% url 'add_to_cart' product.slug 1 %}"><img class="pull-right shopping_icon"src="{% static 'images/basket-icon.png' %}"></a> #}
+        <form method="POST" action="{% url 'add_by_post' %}">{% csrf_token %}
+          <input value='1' size='1' name="quantity"/>
+          <input class="shopping_cart_image" type="submit" value=''/>
+          <input type="hidden" name="slug" value='{{product.slug}}'/>
+        </form> 
+      </div>
+    </div>
+   {% endfor %}
+
+  </div>
+
+
+<div class="col-md-12 centered pagination">
+    <span class="step-links">
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ products.number }} of {{ products.paginator.num_pages }}.
+        </span>
+
+        {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

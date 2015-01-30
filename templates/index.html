@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block 'index' %}
+	<div class="col-md-12">
+		<ul class="rslides">
+		{% for slide in slides %}
+			<li><img src="{{MEDIA_URL}}{{slide.image}}" alt="{{slide.title}}"/></li>
+
+		{% endfor %}
+		  
+		</ul>
+
+	</div>
+
+
+	<div class="col-md-12 featured">
+	<h1>Featured products</h1>
+	 {% for product in top_products %}
+	 	<div class="col-md-3 featured_pr">
+	 	<div class="featured_br">
+		 		<a class="col-md-12"><img class="product_img" src="{{MEDIA_URL}}{{product.mainImage}} " alt="{{product.title}}"/> </a>
+		 		<h1> <a href="{% url 'product' product.slug %}">{{product.title|truncatechars:14}}</a> </h1>
+		 		<p>{{product.price}}</p>
+		 		<img class="pull-right shopping_icon"src="{% static 'images/basket-icon.png' %}">
+		 	</div>
+	 	</div>
+	 {% endfor %}
+
+	</div>
+
+{% endblock %}
+

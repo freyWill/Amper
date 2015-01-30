@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load mptt_tags %}
+{% block 'single_product' %}
+
+{{product.pk}}
+	<div class="breadcrumbs">
+		{{nodes}}
+		{% for parent in nodes.get_ancestors %}
+  		<a href="{{ define_url_to_parent }}">{{ parent }}</a>
+		{% endfor %}
+
+	</div>
+	
+	<div class="col-md-4">
+		<div class="main_image">
+			<img src="{{MEDIA_URL}}{{product.mainImage}}"/>
+		</div>
+
+		<div class="additional_images">
+		<h1>More images of {{product.title}}</h1>
+			{% for image in product.images_set.all %}
+				<img src="{{MEDIA_URL}}{{image.image}}"/>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="col-md-8">
+		<h1 class="product_title">{{product.title}}</h1>
+		<p>{{product.body}}</p>
+		<p>Price:{{product.price}} &pound;</p>
+		<p>In stock: {{product.quantity}} items</p>
+		<p>Tags: {{product.tags}}</p>
+	</div>
+
+<style>
+
+	}
+
+</style>
+
+{% endblock %}
+
+

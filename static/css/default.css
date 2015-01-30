@@ -1,0 +1,198 @@
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,300,700);
+
+.menu li,a {
+
+	display: inline-block;
+	margin-right: 20px;
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 400;
+
+}
+p, a, span, h1{
+	font-family: 'Titillium Web', sans-serif;
+	color: #182245;
+}
+
+a:hover,a{
+	text-decoration: none;	
+	font-family: 'Titillium Web', sans-serif;
+	color: #182245;
+	font-size: 1.3em;
+
+}
+
+.menu{
+	display: inline-block;	
+
+}
+
+.menu ul{
+	margin-top: 11px;
+}
+
+.account{
+	margin-top: 11px;
+}
+
+.account span{
+	font-size: 1.3em;
+	border-right: 1px solid #182245;
+	padding-right: 10px;
+
+} 
+
+.header{
+	height: 70px;
+	padding-top: 5px;
+}
+.account img{
+max-height: 20px;
+margin-left: 30px;
+
+}
+/*//===== slider =====*/
+.rslides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  }
+  .rslides li {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+
+  }
+
+.rslides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+
+.rslides img {
+  display: block;
+  height: auto;
+  float: left;
+  width: 100%;
+  border: 0;
+  margin-top: -20%;
+  }
+/*//==========featured============*/
+.featured h1{
+	text-align: center;
+
+
+}
+
+.featured_pr{
+	
+	background-color: white;
+	
+	padding: 10px;
+	margin-bottom: 55px;
+}
+.product_img{
+	height: 130px;
+
+	
+}
+.featured a{
+	display: block;
+	text-align: center;
+}
+
+.featured_br{
+	border: 1px solid #cfcfcf;
+	margin:10px;
+	padding: 10px;
+}
+.featured_br:hover{
+	border: 1px solid #ff8b78;
+}
+
+.featured_br h1{
+	font-size: 1.2em;
+}
+.shopping_icon{
+
+	height: 35px;
+} 
+.featured_br p{
+	display:inline-block;
+	text-align: center;
+}
+
+
+/*shopping cart style*/
+
+.shopping_cart_image{
+	outline: none;
+	border:1px solid #D1D1D1;
+	background: #C2FF70;
+	background-image:url('../images/basket-icon.png');
+	background-repeat: no-repeat;
+	position: absolute;
+	
+	height:26px;
+	width:45px;
+	background-size: 40px 20px;
+	display: inline-block;
+}
+
+
+/*============ Categories ================*/
+.children ul{
+	list-style: none;
+}
+
+.children_container{
+	z-index: 2;
+	min-height: 20px;
+	min-width: 50px;
+	position: absolute;
+	display: none;
+	background:#ff8b78;
+	
+}
+
+.category_container{
+	margin-top: 20px;
+}
+
+.category_container li:hover > .children_container{
+	display: inline-block;
+}
+.category_container li{
+	display: inline-block;
+}
+
+.category_links{
+	display: inline-block;
+}
+
+/*================ Explore box ================*/
+
+.explore img{
+  width: 100%;
+}
+
+.explore { 
+	overflow: hidden; 
+	height: 100px;
+}
+
+.explore h1 {
+	cursor: pointer;
+	position: absolute;
+	color: white;
+	text-align: center;
+	left: 45%;
+	
+}

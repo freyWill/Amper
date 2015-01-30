@@ -1,0 +1,7 @@
+*.pyc
+migrations/
+*.sqlite3
+*.psd
+env/
+design/
+media/

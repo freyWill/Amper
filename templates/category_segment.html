@@ -1,0 +1,19 @@
+<div class="col-md-12 category_container">
+	{% load mptt_tags %}
+	<ul>
+	{% recursetree nodes %}
+	  <li class=" ">
+	    <a href="{% url 'product_in_category' node.slug %}">{{node}}</a>
+     {% if not node.is_leaf_node %}
+       	<div class="children_container">
+          <ul class="children">
+            <a href="{% url 'product_in_category' node.slug %}">{{children}}</a>
+          </ul>
+        </div> 
+
+      {% endif %}
+    </li>
+  {% endrecursetree %}
+	</ul>
+</div>
+

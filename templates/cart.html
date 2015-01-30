@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block 'cart' %}
+    <table class="col-md-12">
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+        </tr>
+
+        {% for item in cart %}
+        <tr>
+            <td><img src="{{MEDIA_URL}}{{ item.product.mainImage }}"/></td>
+            <td>{{ item.product.title }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.total_price }}</td>
+            <td><a href="{% url 'remove_item_from_cart' item.product.slug %}">Remove</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
