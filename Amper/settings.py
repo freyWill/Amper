@@ -44,6 +44,8 @@ INSTALLED_APPS = (
 	'cart', # this is a python 3rd party module
 	'shopping_cart',
 
+	 'paypal.standard.ipn',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,3 +123,5 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7 * 2
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_SECURE = False
+
+PAYPAL_RECEIVER_EMAIL = "p.kolev22@gmail.com"

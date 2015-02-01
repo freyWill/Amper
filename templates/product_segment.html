@@ -1,0 +1,22 @@
+{% load amper_tags %}
+{% for product in products %}
+    <div class="col-md-3 featured_pr">
+    <div class="featured_br">
+        <a href="{% url 'product' product.slug %}" class="col-md-12"><img alt="{{product.mainImage}}" class="product_img" src="{{MEDIA_URL}}{{product.mainImage}} " alt="{{product.title}}"/> </a>
+        <h1> <a href="{% url 'product' product.slug %}">{{product.title|truncatechars:40}}</a> </h1>
+        <p> &pound;{{product.price|floatformat:"2"}}</p>
+        {# <a href="{% url 'add_to_cart' product.slug 1 %}"><img class="pull-right shopping_icon"src="{% static 'images/basket-icon.png' %}"></a> #}
+
+        {% if cart|get_item:product.title  %}
+          <p>{{cart|get_item:product.title}}</p>
+          <p><span class="glyphicon glyphicon-ok" style="color:green;">Added</span></p>
+        {% endif %}
+
+        <form method="POST" action="{% url 'add_by_post' %}">{% csrf_token %}
+          <input value='1' size='1' name="quantity"/>
+          <input class="shopping_cart_image" type="submit" value=''/>
+          <input type="hidden" name="slug" value='{{product.slug}}'/>
+        </form>
+      </div>
+    </div>
+   {% endfor %}

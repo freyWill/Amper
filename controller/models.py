@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Slide(models.Model):
+class Slide(models.Model): # a controller class for the sliders. They can be modified in the admin panel
 	title=models.CharField(max_length=120)
 	body = models.TextField()
 	image = models.ImageField(blank=False, null=False)
