@@ -44,7 +44,6 @@ class Product(models.Model):
 		else:
 			return None
 
-
 	def __str__(self):
 		return self.title
 
@@ -57,7 +56,7 @@ class Product(models.Model):
 		return mark_safe("<img height='200' src='/media/%s'>" % self.mainImage)
 	display_image.allow_tags = True
 
-class Images(models.Model):
+class ExtraImage(models.Model):
 	title = models.CharField(max_length=300)
 	image = models.ImageField(blank=False, null=False, upload_to="media")
 	product = models.ForeignKey(Product)
@@ -65,6 +64,10 @@ class Images(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	def display_image(self):
+		return mark_safe("<img height='200' src='/media/%s'>" % self.image)
+	display_image.allow_tags = True
 
 
 @receiver(pre_delete, sender=Product)

@@ -1,4 +1,4 @@
-from product.models import Category, Product
+from product.models import Category, Product, ExtraImage
 from controller.models import Slide
 from autofixture import AutoFixture
 from django.contrib.auth.models import User
@@ -38,6 +38,8 @@ notebooks.save()
 macbooks = Category(title="Macbooks", parent=laptops, slug='macbooks')
 macbooks.save()
 
+
+
 print "Creating superuser"
 user = User.objects.create_user('root', 'll@gmail.com', 'toor')
 user.is_superuser = True
@@ -50,4 +52,9 @@ entries = fixture.create(3)
 print "Generating dummy products"
 fixture = AutoFixture(Product)
 entries = fixture.create(15)
+
+print "Generating dummy additional images"
+fixture = AutoFixture(ExtraImage)
+entries = fixture.create(50)
+
 print "done :) !"

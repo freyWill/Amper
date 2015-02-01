@@ -11,7 +11,7 @@
 		{% endfor %}
 
 	</div>
-	
+
 	<div class="col-md-4">
 		<div class="main_image">
 			<img src="{{MEDIA_URL}}{{product.mainImage}}"/>
@@ -19,8 +19,10 @@
 
 		<div class="additional_images">
 		<h1>More images of {{product.title}}</h1>
-			{% for image in product.images_set.all %}
-				<img src="{{MEDIA_URL}}{{image.image}}"/>
+			{% for image in product.extraimage_set.all %}
+				<div class="single_product_images_container">
+					<img src="{{MEDIA_URL}}{{image.image}}"/>
+			</div>
 			{% endfor %}
 		</div>
 	</div>
@@ -34,11 +36,14 @@
 	</div>
 
 <style>
-
-	}
+/* single page css */
+.single_product_images_container{
+	overflow:hidden;
+	width:100px;
+	height:100px;
+	display:inline-block;
+}
 
 </style>
 
 {% endblock %}
-
-

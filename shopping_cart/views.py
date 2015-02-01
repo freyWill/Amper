@@ -1,6 +1,6 @@
 from django.shortcuts import render,render_to_response,redirect, HttpResponseRedirect
 from cart import Cart
-from product.models import Product
+from product.models import Product, Category
 from Amper.views import baseDict
 from django.template import RequestContext
 from controller.models import Slide
@@ -28,7 +28,7 @@ def remove_from_cart(request, product_slug):
 def view_cart(request):
 	dictionary = baseDict(request)
 	update_dict_for_main_page_redirect(dictionary, request)
-	
+
 	totalPrice = 0
 	for i in Cart(request):
 		totalPrice += i.product.price
@@ -43,16 +43,17 @@ def view_cart(request):
 def add_to_cart_via_post(request):
 	dictionary = baseDict(request)
 	update_dict_for_main_page_redirect(dictionary, request)
-	
+
 	quantity = request.POST.get('quantity')
 
 	if int(quantity) <= 0:
 		print "error detected"
 		dictionary.update({
-			"error_message" : "The quantity you added is %s, please put a positive number !" % quantity
+			"error_message" : "The quantity you added is %s, please put a positive number !" % quantity,
+			'nodes' : Category.objects.all(),
 		})
 		# return render_to_response('index.html', dictionary, context_instance = RequestContext(request))
-		return render_to_response("index.html", dictionary, context_instance = RequestContext(request))
+		return render_to_response("all_products.html", dictionary, context_instance = RequestContext(request))
 
 	product_slug = request.POST.get('slug')
 	product = Product.objects.get(slug=product_slug)

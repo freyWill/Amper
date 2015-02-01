@@ -23,18 +23,25 @@ def baseDict(request):
 	for i in Cart(request):
 		item_count+=1
 
+	inCartDict = {}
+	for i in Cart(request):
+		inCartDict.update({
+			i.product.title : i.quantity,
+		})
+
 	user = request.user
 	dictionary = {
 		'user' : user,
+		'cart' : inCartDict,
 		'cart_item_count' : item_count,
 		'page_title' : "Amper"
 	}
 
 	if request.user.is_authenticated():
-		
+
 		dictionary.update({
 			'userProfile' : UserProfile.objects.get(user=user),
-		
+
 		})
 
 	return dictionary
