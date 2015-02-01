@@ -50,7 +50,7 @@ a:hover,a{
 .header{
 	height: 70px;
 	padding-top: 5px;
-	margin-bottom:10px;
+	margin-bottom:50px;
 	border-bottom:solid 2px #eee;
 }
 
@@ -140,8 +140,48 @@ margin-top:10px;
 	text-align: center;
 }
 
+/*============== company info =========*/
+.corporate_id{
+	text-align: center;
+	margin-top: 90px;
+	margin-bottom: 50px;
+}
+
+.corporate_id span{
+	font-size: 5.5em;
+	color: #ff8b78;
+}
+
+.clients{
+	background-color: #eee;
+	padding-bottom: 30px;
+
+}
+
+.clients h1{
+	text-align: center;
+}
+
+.clients img{
+	max-width: 200px;
+}
+
+.footer{
+	background-color: #182245;	
+}
+
+.footer_content h1, .footer_content p{
+	color: white;
+	font-size: 1.2em;
+
+}
 
 /*shopping cart style*/
+
+.cart_title{
+	text-align: center;
+	margin-bottom: 55px;
+}
 
 .cart_table_beginning{
 	padding-left:30px;
