@@ -1,0 +1,11 @@
+* Renamed image to extraimage
+* Now generator creates dummy extra images
+* Extra image displays thumbnails in the admin panel
+* In product views, products_paginated method added to make pagination more modular
+* Root view now globally passes cart dictionary. With it you can retrieve 
+* Improved readme with proper instructions and setup
+* Previously products were fetched using objects or 404, that has been removed so it does not raise issues on empty categories
+* Error message backend has been provided and proper information is now passed ot the dictionary
+* Product items now show how many of them have been added and displays an icon
+* Wrote custom amper_tags file. Currently it contains only the dictionary key-> value for retrieving the number of products added to the basket.
+* Single product images now display in a block
