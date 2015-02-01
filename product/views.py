@@ -17,7 +17,8 @@ def product(request,slug):
 
 	dictionary.update({
 		'product' : product,
-		'nodes' : Category.objects.get(slug=product.category.slug,)
+		'nodes' : Category.objects.get(slug=product.category.slug,),
+		'page_title' : str(product.title) + " - Amper",
 	})
 
 	return render_to_response("single_product.html", dictionary, context_instance = RequestContext(request))
@@ -40,9 +41,9 @@ def view_all(request):
 		paginated_products = paginator.page(paginator.num_pages)
 
 	dictionary = baseDict(request)
-	
 	dictionary.update({
 		'products' : paginated_products,
+		'page_title' : 'Products - Amper',
 		'nodes' : Category.objects.all(),
 		'token' : c,
 	})

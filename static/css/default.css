@@ -1,5 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,300,700);
 
+body{
+	max-width:1334px;
+	margin:auto;
+}
+
 .menu li,a {
 
 	display: inline-block;
@@ -14,7 +19,7 @@ p, a, span, h1{
 }
 
 a:hover,a{
-	text-decoration: none;	
+	text-decoration: none;
 	font-family: 'Titillium Web', sans-serif;
 	color: #182245;
 	font-size: 1.3em;
@@ -22,7 +27,8 @@ a:hover,a{
 }
 
 .menu{
-	display: inline-block;	
+	margin-top:8px;
+	display: inline-block;
 
 }
 
@@ -31,7 +37,7 @@ a:hover,a{
 }
 
 .account{
-	margin-top: 11px;
+	margin-top: 20px;
 }
 
 .account span{
@@ -39,15 +45,19 @@ a:hover,a{
 	border-right: 1px solid #182245;
 	padding-right: 10px;
 
-} 
+}
 
 .header{
 	height: 70px;
 	padding-top: 5px;
+	margin-bottom:10px;
+	border-bottom:solid 2px #eee;
 }
+
 .account img{
 max-height: 20px;
-margin-left: 30px;
+margin-left: -16px;
+margin-top:10px;
 
 }
 /*//===== slider =====*/
@@ -92,16 +102,16 @@ margin-left: 30px;
 }
 
 .featured_pr{
-	
+
 	background-color: white;
-	
+
 	padding: 10px;
-	margin-bottom: 55px;
+	/*margin-bottom: 55px;*/
 }
 .product_img{
 	height: 130px;
 
-	
+
 }
 .featured a{
 	display: block;
@@ -112,6 +122,7 @@ margin-left: 30px;
 	border: 1px solid #cfcfcf;
 	margin:10px;
 	padding: 10px;
+	min-height:320px;
 }
 .featured_br:hover{
 	border: 1px solid #ff8b78;
@@ -123,7 +134,7 @@ margin-left: 30px;
 .shopping_icon{
 
 	height: 35px;
-} 
+}
 .featured_br p{
 	display:inline-block;
 	text-align: center;
@@ -132,17 +143,45 @@ margin-left: 30px;
 
 /*shopping cart style*/
 
+.cart_table_beginning{
+	padding-left:30px;
+}
+
+.cart_table_image{
+	max-width:200px;
+	max-height:200px;
+	margin:10px;
+	margin-left:30px;
+}
+
+.table_item{
+	margin-bottom:10px
+}
+
+.cart_table_content p{
+	padding-top:5px;
+	max-width: 300px
+}
+
+.cart_table_content{
+	border-top:1px solid #eee;
+}
+
+.remove_from_cart{
+	color:red;
+}
+
 .shopping_cart_image{
 	outline: none;
 	border:1px solid #D1D1D1;
-	background: #C2FF70;
+	background: #55C23F;
 	background-image:url('../images/basket-icon.png');
 	background-repeat: no-repeat;
 	position: absolute;
-	
-	height:26px;
-	width:45px;
-	background-size: 40px 20px;
+	margin-left:-1px;
+	height:25px;
+	width:40px;
+	background-size: 37px;
 	display: inline-block;
 }
 
@@ -159,7 +198,7 @@ margin-left: 30px;
 	position: absolute;
 	display: none;
 	background:#ff8b78;
-	
+
 }
 
 .category_container{
@@ -183,8 +222,8 @@ margin-left: 30px;
   width: 100%;
 }
 
-.explore { 
-	overflow: hidden; 
+.explore {
+	overflow: hidden;
 	height: 100px;
 }
 
@@ -194,5 +233,5 @@ margin-left: 30px;
 	color: white;
 	text-align: center;
 	left: 45%;
-	
+
 }

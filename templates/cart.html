@@ -1,22 +1,31 @@
-{% extends 'base.html' %}
+
+
+</div>{% extends 'base.html' %}
 
 {% block 'cart' %}
     <table class="col-md-12">
         <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Total Price</th>
+            <th class="cart_table_beginning">ITEM</th>
+            <th></th>
+            <th>PRICE</th>
+            <th>QTY</th>
+            <th>TOTAL</th>
+            <th></th>
         </tr>
+        <hr/>
 
-        {% for item in cart %}
-        <tr>
-            <td><img src="{{MEDIA_URL}}{{ item.product.mainImage }}"/></td>
-            <td>{{ item.product.title }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.total_price }}</td>
-            <td><a href="{% url 'remove_item_from_cart' item.product.slug %}">Remove</a></td>
+
+      {% for item in cart %}
+        <tr class="cart_table_content">
+          <td><img class="cart_table_image" src="{{MEDIA_URL}}{{ item.product.mainImage }}"/></td>
+          <td><p>{{ item.product.title }}</p></td>
+          <td><p>{{ item.product.price|floatformat:"2" }}</p></td>
+
+          <td><p>{{ item.quantity }}</p></td>
+          <td><p>{{item.total_price|floatformat:"2"}}</p></td>
+          <td><a href="{% url 'remove_item_from_cart' item.product.slug %}"><span class="glyphicon glyphicon-remove remove_from_cart"></span></a></td>
         </tr>
         {% endfor %}
     </table>
+    <p>Total price: {{totalPrice|floatformat:"2"}} > Proceed to checkout </p>
 {% endblock %}
-

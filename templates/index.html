@@ -18,9 +18,15 @@
 	 {% for product in top_products %}
 	 	<div class="col-md-3 featured_pr">
 	 	<div class="featured_br">
-		 		<a class="col-md-12"><img class="product_img" src="{{MEDIA_URL}}{{product.mainImage}} " alt="{{product.title}}"/> </a>
-		 		<h1> <a href="{% url 'product' product.slug %}">{{product.title|truncatechars:14}}</a> </h1>
-		 		<p>{{product.price}}</p>
+		 		<a href="{% url 'product' product.slug %}" class="col-md-12"><img class="product_img" src="{{MEDIA_URL}}{{product.mainImage}} " alt="{{product.title}}"/> </a>
+		 		<h1> <a href="{% url 'product' product.slug %}">{{product.title|truncatechars:60}}</a></h1>
+
+		 		<p>Price: &pound;{{product.price|floatformat:"2" }} </p>
+		 		<form method="POST" action="{% url 'add_by_post' %}">{% csrf_token %}
+          <input value='1' size='1' name="quantity"/>
+          <input class="shopping_cart_image" type="submit" value=''/>
+          <input type="hidden" name="slug" value='{{product.slug}}'/>
+        </form> 
 		 		<img class="pull-right shopping_icon"src="{% static 'images/basket-icon.png' %}">
 		 	</div>
 	 	</div>

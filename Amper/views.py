@@ -27,6 +27,7 @@ def baseDict(request):
 	dictionary = {
 		'user' : user,
 		'cart_item_count' : item_count,
+		'page_title' : "Amper"
 	}
 
 	if request.user.is_authenticated():

@@ -14,9 +14,9 @@
    {% for product in products %}
     <div class="col-md-3 featured_pr">
     <div class="featured_br">
-        <a href="{% url 'product' product.slug %}" class="col-md-12"><img class="product_img" src="{{MEDIA_URL}}{{product.mainImage}} " alt="{{product.title}}"/> </a>
-        <h1> <a href="{% url 'product' product.slug %}">{{product.title|truncatechars:14}}</a> </h1>
-        <p>{{product.price}}</p>
+        <a href="{% url 'product' product.slug %}" class="col-md-12"><img alt="{{product.mainImage}}" class="product_img" src="{{MEDIA_URL}}{{product.mainImage}} " alt="{{product.title}}"/> </a>
+        <h1> <a href="{% url 'product' product.slug %}">{{product.title|truncatechars:40}}</a> </h1>
+        <p> &pound;{{product.price|floatformat:"2"}}</p>
         {# <a href="{% url 'add_to_cart' product.slug 1 %}"><img class="pull-right shopping_icon"src="{% static 'images/basket-icon.png' %}"></a> #}
         <form method="POST" action="{% url 'add_by_post' %}">{% csrf_token %}
           <input value='1' size='1' name="quantity"/>

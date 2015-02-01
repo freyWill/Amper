@@ -16,6 +16,8 @@ urlpatterns = patterns('',
 		url(r'^products/', include('product.urls')),
 		url(r'^shopping-cart/', include('shopping_cart.urls')),
 
+		# generator
+
 )
 
 if settings.DEBUG :
