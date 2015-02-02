@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, ExtraImage
+from .models import Product, Category, ExtraImage, Rating
 # Register your models here.
 
 class ImageInline(admin.TabularInline):
@@ -7,7 +7,7 @@ class ImageInline(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
 	Meta = Product
-	list_display = ("pk","display_image","title","rating", "purchased", "viewed")
+	list_display = ("pk","display_image","title","rate", "purchased", "viewed")
 	prepopulated_fields = {'slug' : ('title',)}
 	inlines = [
 		ImageInline,
@@ -25,3 +25,4 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(ExtraImage, ExtraImageAdmin)
+admin.site.register(Rating,)

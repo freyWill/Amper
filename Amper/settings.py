@@ -33,7 +33,6 @@ INSTALLED_APPS = (
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
-	'djangoratings',
 	'mptt',
 	'product',
 	'user_profile',

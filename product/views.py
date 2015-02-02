@@ -1,6 +1,6 @@
 
 from django.shortcuts import render, render_to_response
-from .models import Product, Category
+from .models import Product, Category, Rating
 from django.http import HttpResponse
 from Amper.views import baseDict, cartItems
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -11,7 +11,7 @@ from django.core.context_processors import csrf
 from cart import Cart
 
 def products_paginated(request, products): # a shortcut function for quick pagination
-
+	
 	paginator = Paginator(products,10)
 	page = request.GET.get('page')
 
@@ -26,8 +26,25 @@ def products_paginated(request, products): # a shortcut function for quick pagin
 
 	return paginated_products
 
+def rate_product(request, slug, rating):
+	product = Product.objects.get(slug=slug)
+	rating = Rating(product=product, rating = int(rating), user = request.user)
+	rating.save()
+
+	dictionary = baseDict(request)
+	cartItems(request, dictionary) # get the cart items in a form of a dictionary, so that templates can display if item has been added or not
+
+	dictionary.update({
+		'product' : product,
+		'nodes' : Category.objects.get(slug=product.category.slug,),
+		'page_title' : str(product.title) + " - Amper",
+	})
+
+	return render_to_response("single_product.html", dictionary, context_instance = RequestContext(request))
+
+
 def product(request,slug):
-	product = get_object_or_404(Product, slug=str(slug))
+	product = get_object_or_404(Product, slug=str(slug), active=True)
 	dictionary = baseDict(request) # fetch the common data
 	cartItems(request, dictionary) # get the cart items in a form of a dictionary, so that templates can display if item has been added or not
 	productCategory = Category.objects.get(slug=product.category.slug)
@@ -62,15 +79,18 @@ def view_by_category(request, category="-111"):
 
 	dictionary = baseDict(request)
 
-	children = Product.objects.filter(category__parent__slug=category) # so that all subcategory products can be fetched and displayed
-	direct = Product.objects.filter(category__slug=category)					 # fetches the current product branch
+	children = Product.objects.filter(active=True, category__parent__slug=category) # so that all subcategory products can be fetched and displayed
+	direct = Product.objects.filter(active=True, category__slug=category)					 # fetches the current product branch
 	products = list(chain(children, direct))                           # this line joins them
 
 	cartItems(request, dictionary) 
 
 	dictionary.update({
+		'category' : category.title(),
 		'products' : products_paginated(request, products),
 		'nodes' : Category.objects.all(),
+		'page_title' : category.title() + ' - Amper',
 	})
 
 	return render_to_response("products.html", dictionary, context_instance = RequestContext(request))
+

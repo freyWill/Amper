@@ -52,11 +52,17 @@ def add_to_cart_via_post(request):
 			'nodes' : Category.objects.all(),
 		})
 		# return render_to_response('index.html', dictionary, context_instance = RequestContext(request))
-		return render_to_response("all_products.html", dictionary, context_instance = RequestContext(request))
+		return render_to_response("products.html", dictionary, context_instance = RequestContext(request))
 
 	# otherwise fetch the product and add it's amount to the cart
 	product_slug = request.POST.get('slug')
 	product = Product.objects.get(slug=product_slug)
+	if (int(product.quantity) - int(quantity)) < 0:
+		dictionary.update({
+			'error_message' : '%s has %d items left in stock !' % (product.title, product.quantity),
+			'nodes' : Category.objects.all(),
+		})
+		return render_to_response("products.html", dictionary, context_instance = RequestContext(request))
 
 	cart = Cart(request)
 	cart.add(product, product.price, quantity)

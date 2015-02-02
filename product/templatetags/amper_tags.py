@@ -12,4 +12,8 @@ def get_item(dictionary, key): # custom template tag that converts product title
 
 @register.filter
 def get_range(value):
-  return range(value)
+  return range(int(value))
+
+@register.filter
+def get_subtraction(value):
+	return range(int(5-value))

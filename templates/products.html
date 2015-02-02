@@ -4,34 +4,38 @@
 {% block 'products' %}
 
 <div class="col-md-12 explore"><h1 class="explore_expander">Explore</h1><img src="{% static 'images/explore.png' %}">
-    <div >
-    </div>
+
 </div>
 
 {% include 'category_segment.html' %}
 
 <div class="col-md-12 featured">
-  <h1>All products</h1>
-   
+  {% if category %}
+  	<h1>{{category}}</h1>
+  {% else %}
+  	<h1>All products</h1>
+  {% endif %}
+	   
   {% include 'product_segment.html' %}
 
   </div>
   
 
+
 <div class="col-md-12 centered pagination">
-    <span class="step-links">
-        {% if products.has_previous %}
-            <a href="?page={{ products.previous_page_number }}">previous</a>
-        {% endif %}
+	<span class="step-links">
+		{% if products.has_previous %}
+			<a href="?page={{ products.previous_page_number }}">previous</a>
+		{% endif %}
 
-        <span class="current">
-            Page {{ products.number }} of {{ products.paginator.num_pages }}.
-        </span>
+		<span class="current">
+			Page {{ products.number }} of {{ products.paginator.num_pages }}.
+		</span>
 
-        {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}">next</a>
-        {% endif %}
-    </span>
+		{% if products.has_next %}
+			<a href="?page={{ products.next_page_number }}">next</a>
+		{% endif %}
+	</span>
 </div>
 
 {% endblock %}

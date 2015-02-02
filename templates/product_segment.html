@@ -1,23 +1,38 @@
 {% load staticfiles %}
 {% load amper_tags %}
+
+{% if error_message %}      
+		<div class="alert alert-danger" role="alert">
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			<span class="sr-only">Error:</span>
+			{{error_message}}
+		</div>
+
+{% endif %}
+
 {% for product in products %}
     <div class="col-md-3 featured_pr">
     <div class="featured_br">
-        <a href="{% url 'product' product.slug %}" class="col-md-12"> <div class="pr_img_container"> <img alt="{{product.mainImage}}" class="product_img" src="{{MEDIA_URL}}{{product.mainImage}} " alt="{{product.title}}"/></div> </a>
+        <div class="pr_img_container"> 
+          <a href="{% url 'product' product.slug %}" class="col-md-12 inline"> 
+            <img alt="{{product.mainImage}}" class="product_img" src="{{MEDIA_URL}}{{product.mainImage}} " alt="{{product.title}}"/>
+         </a>
+        </div>
         <h1> <a href="{% url 'product' product.slug %}">{{product.title|truncatechars:40}}</a> </h1>
 
         <div class="rating">
-          {% for i in 1|get_range %}
-            <img src="{% static 'images/bstar.png' %}"/>
+          {% for i in product.rate|get_range %}
+            <a href="{% url 'rate_product' product.slug forloop.counter %}">
+              <img src="{% static 'images/bstar.png' %}"/>
+            </a>
           {% endfor %}
 
-          {% for i in 5|add:"-1"|get_range %}
-            <img src="{% static 'images/gstar.png' %}"/>
+          {% for i in product.rate|get_subtraction %}
+            <a href="{% url 'rate_product' product.slug forloop.counter|add:product.rate %}"><img src="{% static 'images/gstar.png' %}"/></a>
           {% endfor %}
+
         </div>
-        <p> &pound;{{product.price|floatformat:"2"}}</p>
-        {# <a href="{% url 'add_to_cart' product.slug 1 %}"><img class="pull-right shopping_icon"src="{% static 'images/basket-icon.png' %}"></a> #}
-
+        <p class="product_price_tag"> &pound;{{product.price|floatformat:"2"}}</p>
 
         <form method="POST" action="{% url 'add_by_post' %}">{% csrf_token %}
           <input class="quantity" value='1' size='1' name="quantity"/>
@@ -31,3 +46,4 @@
       </div>
     </div>
    {% endfor %}
+

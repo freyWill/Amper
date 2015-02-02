@@ -21,8 +21,8 @@ Required:
 * Most of the commands are run in terminal/cmd
 
 ### Quick man's guide
-**Windows**: `virtualenv env && env\Scripts\activate && pip install django==1.7.1 django-autofixture pillow django-cart django-ratings django-mptt && python manage.py migrate && python manage.py shell < generate_content.py && python manage.py runserver`  
-**Linux:** `virtualenv env && source env/bin/activate && pip install django==1.7.1 django-autofixture pillow django-cart django-ratings django-mptt && python manage.py migrate && python manage.py shell < generate_content.py && python manage.py runserver`
+**Windows**: `virtualenv env && env\Scripts\activate && pip install django==1.7.1 django-autofixture pillow django-cart django-mptt && python manage.py migrate && python manage.py shell < generate_content.py && python manage.py runserver`  
+**Linux:** `virtualenv env && source env/bin/activate && pip install django==1.7.1 django-autofixture pillow django-cart django-mptt && python manage.py migrate && python manage.py shell < generate_content.py && python manage.py runserver`
 Now open http://localhost:8000 and enjoy
 ### Step by step
 1. Clone the directory and open a cmd on windows or terminal on linux, then change directory (cd) to the root of the project.  
@@ -32,7 +32,7 @@ Root of the project will be `something/something/Amper`
 **On windows:** `env/Scripts/activate`  
 **On linux:** `source env/bin/activate`
 4. Install requirements:  
-` pip install django==1.7.1 django-autofixture django-ratings pillow django-cart django-mptt`
+` pip install django==1.7.1 django-autofixture pillow django-cart django-mptt`
 5. Create the database and generate dummy data:  
 `python manage.py migrate && python manage.py shell < generate_content.py`
 6. Run server:  

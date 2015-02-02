@@ -46,6 +46,10 @@ user.is_superuser = True
 user.is_staff = True
 user.save()
 
+for i in range(0,10):
+	user = User.objects.create_user("user"+str(i), 'user'+str(i)+"@gmail.com", 'toor')
+	user.save()
+
 print "Generating dummy slides"
 fixture = AutoFixture(Slide)
 entries = fixture.create(3)
