@@ -9,3 +9,7 @@ def get_item(dictionary, key): # custom template tag that converts product title
     except Exception:
         result = ""
     return result
+
+@register.filter
+def range( value ):
+  return range( value )
