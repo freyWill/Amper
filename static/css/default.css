@@ -3,6 +3,7 @@
 body{
 	max-width:1334px;
 	margin:auto;
+	background-color: #f1f1f1;
 }
 
 .menu li,a {
@@ -103,29 +104,33 @@ margin-top:10px;
 
 .featured_pr{
 
-	background-color: white;
+	background-color: #f1f1f1;
 
 	padding: 10px;
 	/*margin-bottom: 55px;*/
 }
-.product_img{
-	height: 130px;
-
-
+.pr_img_container{
+	overflow: hidden;
+	max-width: 190px;
+	height: 150px;
 }
+
+
 .featured a{
 	display: block;
 	text-align: center;
 }
 
 .featured_br{
-	border: 1px solid #cfcfcf;
+	/*border: 1px solid #cfcfcf;*/
 	margin:10px;
 	padding: 10px;
-	min-height:320px;
+	min-height:365px;
+	background-color: white;
 }
 .featured_br:hover{
-	border: 1px solid #ff8b78;
+	/*border: 1px solid #00a9ac;*/
+	box-shadow: 0px 2px 3px #00a9ac;
 }
 
 .featured_br h1{
@@ -149,11 +154,11 @@ margin-top:10px;
 
 .corporate_id span{
 	font-size: 5.5em;
-	color: #ff8b78;
+	color: #182245;
 }
 
 .clients{
-	background-color: #eee;
+	background-color: white;
 	padding-bottom: 30px;
 
 }
