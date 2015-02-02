@@ -16,7 +16,9 @@ urlpatterns = patterns('',
 		url(r'^products/', include('product.urls')),
 		url(r'^shopping-cart/', include('shopping_cart.urls')),
 
-		# generator
+		# paypal 
+
+		 (r'^paypal/', include('paypal.standard.ipn.urls')),
 
 )
 

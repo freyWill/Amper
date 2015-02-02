@@ -5,6 +5,8 @@ from Amper.views import baseDict
 from django.template import RequestContext
 from controller.models import Slide
 from django.shortcuts import get_list_or_404, get_object_or_404
+from django.conf import settings
+from django.core.urlresolvers import reverse
 
 def update_dict_for_main_page_redirect(dictionary, request): # this exists, because the cart actions do redirection, and without proper context, the page will look void
 	dictionary.update({

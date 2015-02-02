@@ -25,9 +25,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = (
 	'django.contrib.admin',
 	'django.contrib.auth',
@@ -43,8 +41,6 @@ INSTALLED_APPS = (
 	'autofixture',
 	'cart', # this is a python 3rd party module
 	'shopping_cart',
-
-	 'paypal.standard.ipn',
 
 )
 
@@ -125,3 +121,4 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_SECURE = False
 
 PAYPAL_RECEIVER_EMAIL = "p.kolev22@gmail.com"
+PAYPAL_TEST = True
