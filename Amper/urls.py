@@ -16,10 +16,6 @@ urlpatterns = patterns('',
 		url(r'^products/', include('product.urls')),
 		url(r'^shopping-cart/', include('shopping_cart.urls')),
 
-		# paypal 
-
-		 (r'^paypal/', include('paypal.standard.ipn.urls')),
-
 )
 
 if settings.DEBUG :
