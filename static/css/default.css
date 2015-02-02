@@ -95,7 +95,7 @@ margin-top:10px;
   border: 0;
   margin-top: -20%;
   }
-/*//==========featured============*/
+/*//==========product============*/
 .featured h1{
 	text-align: center;
 
@@ -141,8 +141,36 @@ margin-top:10px;
 	height: 35px;
 }
 .featured_br p{
-	display:inline-block;
+	color: #00a9ac;
+	font-size: 1.3em;
+	display: inline-block;
+}
+
+.rating{
 	text-align: center;
+	margin-bottom: 40px;
+	margin-top: 20px;
+}
+
+.shopping_cart_image{
+	outline: none;
+	border:2px solid #00a9ac;
+	border-radius: 2px;
+	background-color: white;
+	display: inline-block;
+	width: 80px;
+	height: 35px;
+	color:#00a9ac;
+}
+
+.shopping_cart_image:hover{
+	background-color: #00a9ac;
+	color:white;
+}
+
+.quantity{
+	display: none;
+
 }
 
 /*============== company info =========*/
@@ -154,7 +182,7 @@ margin-top:10px;
 
 .corporate_id span{
 	font-size: 5.5em;
-	color: #182245;
+	color: #00a9ac;
 }
 
 .clients{
@@ -216,19 +244,6 @@ margin-top:10px;
 	color:red;
 }
 
-.shopping_cart_image{
-	outline: none;
-	border:1px solid #D1D1D1;
-	background: #55C23F;
-	background-image:url('../images/basket-icon.png');
-	background-repeat: no-repeat;
-	position: absolute;
-	margin-left:-1px;
-	height:25px;
-	width:40px;
-	background-size: 37px;
-	display: inline-block;
-}
 
 
 /*============ Categories ================*/
