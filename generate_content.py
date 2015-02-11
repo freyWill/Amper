@@ -57,6 +57,11 @@ print "Generating dummy products"
 fixture = AutoFixture(Product)
 entries = fixture.create(15)
 
+products = Product.objects.all()
+for i in products:
+	i.quantity=20
+	i.save()
+
 print "Generating dummy additional images"
 fixture = AutoFixture(ExtraImage)
 entries = fixture.create(50)

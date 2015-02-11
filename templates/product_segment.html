@@ -22,13 +22,13 @@
 
         <div class="rating">
           {% for i in product.rate|get_range %}
-            <a href="{% url 'rate_product' product.slug forloop.counter %}">
+            <a style="margin:0px" href="{% url 'rate_product' product.slug forloop.counter %}">
               <img src="{% static 'images/bstar.png' %}"/>
             </a>
           {% endfor %}
 
           {% for i in product.rate|get_subtraction %}
-            <a href="{% url 'rate_product' product.slug forloop.counter|add:product.rate %}"><img src="{% static 'images/gstar.png' %}"/></a>
+            <a style="margin:0px" href="{% url 'rate_product' product.slug forloop.counter|add:product.rate %}"><img src="{% static 'images/gstar.png' %}"/></a>
           {% endfor %}
 
         </div>

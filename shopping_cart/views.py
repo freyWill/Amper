@@ -7,6 +7,7 @@ from controller.models import Slide
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from shopping_cart.models import Order
 
 def update_dict_for_main_page_redirect(dictionary, request): # this exists, because the cart actions do redirection, and without proper context, the page will look void
 	dictionary.update({
@@ -70,3 +71,23 @@ def add_to_cart_via_post(request):
 
 	# return render_to_response('index.html', dictionary, context_instance = RequestContext(request))
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def checkout(request):
+	priceList = []
+	quantityList = []
+	totalPrice = 0
+	order = Order()
+	order.user = request.user
+	order.save()
+	for item in Cart(request):
+		totalPrice += item.product.price
+		priceList.append(item.product.price)
+		quantityList.append(item.product.quantity)
+		order.items.add(item.product)
+	order.itemQuantityList = priceList
+	order.itemPriceList = quantityList
+	order.totalAmount = totalPrice
+	order.save()
+
+	return render_to_response('index.html')
+

@@ -28,5 +28,5 @@
         </tr>
         {% endfor %}
     </table>
-    <p>Total price: {{totalPrice|floatformat:"2"}} > Proceed to checkout </p>
+    <p>Total price: {{totalPrice|floatformat:"2"}} > <a href="{% url 'checkout' %}">Proceed to checkout</a> </p>
 {% endblock %}
