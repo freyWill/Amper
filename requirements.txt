@@ -1,0 +1,5 @@
+Django==1.8.4
+django-autofixture==0.10.1
+django-cart==1.0.3
+django-mptt==0.7.4
+Pillow==2.9.0
